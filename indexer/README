@@ -1,0 +1,84 @@
+
+## DESCRIPTION
+
+	This implements the indexer component of the TinySearch Engine.
+
+	Decomposition of code:
+
+	1) buildIndex.[hc] The main Indexer controller code
+	2) file.[hc] Common file processing functions and data structures
+	3) hash.[hc] hash table functions and data structures
+	4) dictionary.[hc] Dictionary data structure and processing functions
+	5) header.h Some useful Macros
+
+## SOURCE CODE DETAILS
+
+	Lab5, the indexer, includes:
+
+		- this file explains the source code, and how to build, run and test it. 
+
+	./README 
+
+		- this directory is where files are stored [1, 2, 3 ... N] from the crawler
+
+	../lab4/data/ 
+
+		- the source code is  arranged in the following directory:
+
+	../lab4/util/   
+
+        Description: Includes general purpose utilities
+
+		file.c file.h  (file access utilities) <--includes getNextWordFromHTMLDoc and sortFile
+		header.h (some useful MACROS)
+		hash.h hash.c (hash functions)
+		dictionary.h dictionary.c <--includes index-manipulation and DocNode-manipulation functions
+
+	./indexer/
+
+		buildIndex.c  (the main entry) - createIndex and recreateIndex are here
+
+	./
+
+		Makefile - the Makefile for the indexer
+		test_indexer.sh (the bash script to test and run indexer)
+
+## TO BUILD
+
+	To build the indexer, cd into /lab5 and:
+
+	type "make index"
+
+		OR
+
+	type "make index2" (prints each docID accessed and prints the index dictionary to a file in ./ named logOutput)
+
+
+## TO RUN and TEST
+
+	To test the indexer:
+
+	type "indexer ../lab4/data/ [ RESULTS FILENAME ]"
+
+		OR
+
+	type "indexer ../lab4/data/ [ RESULTS FILENAME ] [ RESULTS FILENAME ] [ RECREATED RESULTS FILENAME ]"
+
+	type "./test_indexer.sh"
+	     This script will: 
+	     1 Test the argument checking of indexer.
+	     2 Index ../lab4/data/ and save index of keywords to justindex.dat
+	     3 Index ../lab4/data/ and save index of keywords to index.dat. Then recreate index of keywords from index.dat and save it as newIndex.dat
+	     4 performs "diff index.dat newIndex.dat"
+	     5 Prints results to ./indextestlog.date
+
+	Testing results:
+
+		-file "indextestlog.Sun Feb 16 18:46:02 EST 2014" contains testing output from the files currently in ../lab4/data/ (from crawling http://www.cs.dartmouth.edu/~campbell on depth 3)
+		- the resulting .dat files are in "." (justindex.dat, index.dat, and newIndex.dat)
+
+
+## TO CLEAN UP AFTER TEST
+	
+	type "make clean"
+

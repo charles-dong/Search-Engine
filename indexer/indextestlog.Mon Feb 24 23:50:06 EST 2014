@@ -1,0 +1,69 @@
+We have a clean indexer build
+
+Input validation: invalid number of arguments 
+Incorrect # of arguments. 
+Usage: index [TARGET_DIRECTORY] [RESULTS FILE NAME]
+Or: index [TARGET_DIRECTORY] [RESULTS FILENAME] [RESULTS FILENAME] [REWRITTEN FILENAME]
+
+Input validation: invalid number of arguments 
+Incorrect # of arguments. 
+Usage: index [TARGET_DIRECTORY] [RESULTS FILE NAME]
+Or: index [TARGET_DIRECTORY] [RESULTS FILENAME] [RESULTS FILENAME] [REWRITTEN FILENAME]
+
+Input validation: invalid path
+You entered: 
+[TARGET_DIRECTORY] ./yay
+[RESULTS FILE NAME] index.dat
+
+Please enter a valid directory path. Thanks!
+
+Input validation: path without backslash
+You entered: 
+[TARGET_DIRECTORY] ../data
+[RESULTS FILE NAME] index.dat
+
+
+Input validation: different [RESULTS FILENAME]s
+You entered: 
+[TARGET_DIRECTORY] ../data/
+[RESULTS FILE NAME] index.dat
+[RESULTS FILE NAME] worddddd.dat
+[REWRITTEN FILE NAME] newIndex.dat
+
+Please enter the same [RESULTS FILE NAME] in both instances.
+
+Input validation: invalid file name
+You entered: 
+[TARGET_DIRECTORY] ../data/
+[RESULTS FILE NAME] indexes
+[RESULTS FILE NAME] indexes
+[REWRITTEN FILE NAME] newIndex.dat
+
+Please enter a file name of the format [fileName.dat]. Thanks!
+
+Input validation: invalid newFile name
+You entered: 
+[TARGET_DIRECTORY] ../data/
+[RESULTS FILE NAME] index.dat
+[RESULTS FILE NAME] index.dat
+[REWRITTEN FILE NAME] newIndex
+
+For the rewritten file name, please enter a file name of the format [fileName.dat]. Thanks!
+
+All input validation tests successful!
+
+Test 1: Creating justindex.dat from ../data/
+You entered: 
+[TARGET_DIRECTORY] ../data3/
+[RESULTS FILE NAME] justindex.dat
+
+
+Test 2: Creating index.dat from ../data3/ and newIndex.dat from index.dat
+You entered: 
+[TARGET_DIRECTORY] ../data3/
+[RESULTS FILE NAME] index.dat
+[RESULTS FILE NAME] index.dat
+[REWRITTEN FILE NAME] newIndex.dat
+
+
+Test 2 continued: diff index.dat newIndex.dat

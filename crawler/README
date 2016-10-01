@@ -1,0 +1,91 @@
+
+## DESCRIPTION
+
+	This implements the crawler component of the TinySearch Engine.
+
+	Decomposition of code:
+
+	1) crawler.[hc] The main Crawler controller code
+	2) file.[hc] Common file processing functions and data structures
+	3) list.[hc] Common URL list processing functions and data structures
+	4) html.[hc] Parsing and html processing functions and data structures
+	5) hash.[hc] hash table functions and data structures
+	6) dictionary.[hc] Dictionary data structure and processing functions
+	7) header.h Some useful Macros
+
+## SOURCE CODE DETAILS
+
+	Lab4, the crawler, includes:
+
+		- this file explains the source code, and how to build, run and test it. 
+
+	./README 
+
+		- this directory is where files are stored [1, 2, 3 ... N]
+
+	./data/ 
+
+		- the source code is  arranged in the following directory:
+
+	./util/   
+
+        Description: Includes general purpose utilities and the html parsers
+
+		file.c file.h  (file access utilities)
+		html.c html.h (html parsers, where getNextUrl() hides)
+		header.h (some useful MACROS)
+		hash.h hash.c (hash functions)
+		dictionary.h dictionary.c (a general data structure library implementing dictionary)
+		test.c (unit testing)
+
+	./crawler/
+
+		Description: Main crawler controller, ULR list processing, Makefile
+	        and bash script to run and test the code.
+
+		crawler.c  (the main entry, the crawler main logic is here)
+		list.h list.c (all functions related to the URL list is here)
+
+	./makefile
+
+		Makefile - the Makefile for the crawler
+		test_and_print.sh (the bash script to test and start crawl)
+
+## TO BUILD 
+
+	To build the crawler, cd into /lab4 and:
+
+	type "make crawl"
+
+		OR
+
+	type "make crawlprint" (prints each URL downloaded to stdout and prints each step of process to file ./logOutput)
+
+
+## TO RUN and TEST
+
+	To test the crawler:
+		NOTE that it is unadvisable to crawl http://www.cs.dartmouth.edu on depth 3 due to recursive links.
+
+	type "crawl [ SEED_URL ] ./data/ [ DEPTH ]"
+
+		OR
+
+	type "./test_and_print.sh [ SEED_URL ]"
+		 NOTE that test_and_print.sh does NOT do input validation. Make sure you enter in the format specified.
+	     This script will: 
+	     1 Unit test important functions within the crawler (i.e. addElementToDictionary, extractURLs, etc.)
+	     2 Test the argument checking of crawler.
+	     3 Crawl [ SEED_URL ] at depths 0, 1, 2, and 3, and save data to ./data, ./data1, ./data2, ./data3 respectively
+	     4 Prints results to ./crawler_testlog.‘date‘
+
+	Testing results:
+
+		file "crawler_testlog.Mon Feb 10 18:56:26 EST 2014" contains testing output from the URL http://www.cs.dartmouth.edu/~campbell
+		file "crawler_testlog.Mon Feb 10 20:00:47 EST 2014" contains testing output from the URL http://www.cs.dartmouth.edu/~campbell/cs50
+
+
+## TO CLEAN UP AFTER TEST
+	
+	type "make clean"
+

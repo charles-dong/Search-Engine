@@ -1,0 +1,163 @@
+## SUMMARY
+
+Tiny Search Engine has three components: crawler, indexer, and query engine. These are in their own directories, and functions that are used by more than one of these components are stored in the util directory. 
+
+The crawler crawls the web for urls and stores them in data files. The indexer takes these stored data files and parses the words from them, storing these words and the documents containing a given word in a file which can then be used by the query engine. The query engine takes this data of words and their corresponding documents, and uses that data to handle queries from a user.
+
+Words are considered anything in the html files not inside tags and greater than two letters long.
+
+Searching keywords returns a list of documents and their URLs, arranged in descending order of keyword frequency. The query engine takes the maximum word frequency of duplicate words in the OR list and the sum of frequencies of duplicate words in the AND list. If a keyword that is not in the index is entered, no URLs will be returned (due to the AND operator).
+
+
+## SOURCE CODE DETAILS
+
+	1) queryEngine.c The main Query Engine controller code
+	2) crawler.[hc] The main Crawler controller code
+	3) buildIndex.[hc] The main Indexer controller code
+	4) file.[hc] Common file processing functions and data structures
+	5) hash.[hc] hash table functions and data structures
+	6) dictionary.[hc] Dictionary data structure and processing functions
+	7) list.[hc] Common URL list processing functions and data structures
+	8) html.[hc] Parsing and html processing functions and data structures
+	9) header.h Some useful Macros 
+
+	./README
+
+		- this file explains the source code, and how to build, run and test it. 
+
+	./data3/
+
+		- this directory is where files of depth 3 are stored [1, 2, 3 ... N] from the crawler's test script
+
+	./util/ 
+
+        Description: Includes general purpose utilities
+
+		file.c file.h  (file access utilities)
+		html.c html.h  (parsing utilities)
+		header.h (some useful MACROS)
+		hash.h hash.c (hash functions)
+		dictionary.h dictionary.c (contains dictionary and node manipulation functions)
+
+	./indexer/
+
+		Description: Includes indexer-specific files and scripts
+
+		buildIndex.c  (the main entry) - createIndex is here
+		Makefile - the Makefile for the indexer
+		test_indexer.sh (the bash script to test and run indexer)
+
+	./crawler/
+
+		Description: Main crawler controller, ULR list processing, Makefile
+	        and bash script to run and test the code.
+
+		crawler.c  (the main entry, the crawler main logic is here)
+		list.h list.c (all functions related to the URL list is here)
+
+		Makefile - the Makefile for the crawler
+		test_and_print.sh (the bash script to test and run crawler)
+
+
+	./queryEngine/
+
+		Description: Includes query engine-specific files and scripts
+
+		queryEngine.c (main entry - query engine main logic)
+		testQuery.c (called by test script to unit test query engine)
+
+	./Makefile
+
+		Makefile for query engine
+
+	./testALL.sh
+
+		test script for crawler, indexer, and query engine
+
+	./testQueryEngine.sh
+
+		test script for query engine - assumes crawler has saved data to ./data3/ and indexer has saved index.dat to ./indexer/
+
+
+## TO RUN and TEST ALL TOGETHER
+
+	To test the crawler, indexer, and query engine all at once, run Tiny_Search_Engine/testALL.sh
+		-tests and runs crawler on http://www.cs.dartmouth.edu/~campbell on depths 0, 1, 2, and 3
+			-data files are saved in Tiny_Search_Engine/data0-3, respectively
+		-tests and runs indexer on the depth 3 data (stored in Tiny_Search_Engine/data3/), saving index.dat in Tiny_Search_Engine/indexer
+		-saves crawltestlog and indextestlog to their respective folders, and querytestlog to Tiny_Search_Engine/
+		-runs query engine off of the index  Tiny_Search_Engine/indexer/index.dat and html files in Tiny_Search_Engine/data3/
+
+
+## TO BUILD AND RUN SEPARATELY
+	
+	CRAWLER
+
+		To build:
+
+			cd into Tiny_Search_Engine/crawler and type "make crawl"
+
+		To run:
+
+			type "crawl [ SEED_URL ] ../data/ [ DEPTH ]"
+
+		To test:
+
+			type "./test_and_print.sh [ SEED_URL ]"
+			     This script will: 
+			     1 Unit test important functions within the crawler (i.e. addElementToDictionary, extractURLs, etc.)
+			     2 Test the argument checking of crawler.
+			     3 Crawl [ SEED_URL ] at depths 0, 1, 2, and 3, and save data to ./data, ./data1, ./data2, ./data3 respectively
+			     4 Prints results to ./crawler_testlog.‘date‘
+
+	INDEXER
+
+		To build:
+
+			cd into Tiny_Search_Engine/indexer and type "make index"
+
+		To run:
+
+			type "index ../data3/ [ RESULTS FILENAME ]"
+
+				OR
+
+			type "index ../data3/ [ RESULTS FILENAME ] [ RESULTS FILENAME ] [ RECREATED RESULTS FILENAME ]"
+
+		To test:
+
+			type "indexer/test_indexer.sh"
+			     This script will: 
+			     1 Test the argument checking of indexer.
+			     2 Index ../data3/ and save index of keywords to justindex.dat
+			     3 Index ../data3/ and save index of keywords to index.dat. Then recreate index of keywords from index.dat and save it as newIndex.dat
+			     4 performs "diff index.dat newIndex.dat"
+			     5 Prints results to Tiny_Search_Engine/indexer/indextestlog.date
+
+	QUERY ENGINE
+
+		To build:
+
+			cd into Tiny_Search_Engine and type "make query"
+
+		To run:
+
+			type "query ./indexer/index.dat ./data3/"
+
+		To test:
+
+			type "testQueryEngine.sh"
+			     This script will: 
+			     1 Unit test query engine functions
+			     2 Test the argument checking of query engine
+			     3 Run Query Engine
+
+
+## TO CLEAN UP AFTER TEST
+	
+	from Tiny_Search_Engine/, type "make cleanall" to clean everything, including downloaded files and indexed .dat files
+
+		OR
+
+	from Tiny_Search_Engine/, type "make leavedata" to clean everything but leave the data folders (and downloaded files they contain) and indexed .dat files 
+

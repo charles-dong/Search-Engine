@@ -1,0 +1,135 @@
+Unit Testing of important functions
+
+
+Testing dictionary
+Printing Dictionary To File
+Adding www.dartmouth.edu to dictionary
+Printing Dictionary To File
+Adding www.google.com to dictionary
+Printing Dictionary To File
+Adding www.yahoo.com to dictionary
+Printing Dictionary To File
+Adding www.google.com to dictionary
+Printing Dictionary To File
+Adding www.yahoo.com to dictionary
+Printing Dictionary To File
+
+
+Testing getPage
+fileNumber is now 4
+fileNumber is now 5
+
+
+Testing extractURLs
+url_list[8] = http://www.cs.dartmouth.edu/%7Ecampbell/cs50/lab3.html
+url_list[9] = (null)
+
+
+Testing setURLasVisited
+Printing Dictionary To File
+Setting http://www.cs.dartmouth.edu/~campbell/cs50 to visited.
+Printing Dictionary To File
+
+
+Testing getAddressFromLinksToBeVisited
+Printing Dictionary To File
+
+Running getAddressFromLinksToBeVisited
+Setting nextURL www.dartmouth.edu to visited.
+Printing Dictionary To File
+Setting nextURL www.google.com to visited.
+Printing Dictionary To File
+Setting nextURL www.yahoo.com to visited.
+Printing Dictionary To File
+Printing Dictionary To File
+
+ALL UNIT TESTS PASSED
+Tests run: 5
+
+
+All tests passed.
+We have a clean crawler build
+
+Input validation: invalid URL
+You entered: 
+[SEED_URL] http://www.cs.drtmouth.edu
+[TARGET_DIRECTORY] ../data/
+[CRAWLING_DEPTH] 1
+
+Please enter a valid URL. Thanks!
+
+Input validation: invalid number of arguments 
+You entered: 
+[SEED_URL] http://www.cs.dartmouth.edu/~campbell
+[TARGET_DIRECTORY] hi
+[CRAWLING_DEPTH] ../data/
+
+Incorrect # of arguments. Usage: crawler [SEED URL] [DIRECTORY TO PUT DATA IN] [MAX CRAWLING DEPTH]
+
+Input validation: invalid path
+You entered: 
+[SEED_URL] http://www.cs.dartmouth.edu/~campbell
+[TARGET_DIRECTORY] ../ta
+[CRAWLING_DEPTH] 0
+
+Please enter a valid directory path. Thanks!
+
+Input validation: negative depth
+You entered: 
+[SEED_URL] http://www.cs.dartmouth.edu/~campbell
+[TARGET_DIRECTORY] ../data/
+[CRAWLING_DEPTH] -1
+
+Incorrect depth. Please enter a number between 0 and 4. Thanks!
+
+Input validation: depth too large
+You entered: 
+[SEED_URL] http://www.cs.dartmouth.edu/~campbell
+[TARGET_DIRECTORY] ../data/
+[CRAWLING_DEPTH] 5
+
+Incorrect depth. Please enter a number between 0 and 4. Thanks!
+
+Test 1: depth 0
+Test 1 data will be saved in ../data0
+You entered: 
+[SEED_URL] http://www.cs.dartmouth.edu/~campbell
+[TARGET_DIRECTORY] ../data0/
+[CRAWLING_DEPTH] 0
+
+Done crawling!!
+1 files downloaded.
+Printing Dictionary To File
+
+Test 2: depth 1
+Test 2 data will be saved in ../data1
+You entered: 
+[SEED_URL] http://www.cs.dartmouth.edu/~campbell
+[TARGET_DIRECTORY] ../data1/
+[CRAWLING_DEPTH] 1
+
+Done crawling!!
+19 files downloaded.
+Printing Dictionary To File
+
+Test 3: depth 2
+Test 3 data will be saved in ../data2
+You entered: 
+[SEED_URL] http://www.cs.dartmouth.edu/~campbell
+[TARGET_DIRECTORY] ../data2/
+[CRAWLING_DEPTH] 2
+
+Done crawling!!
+95 files downloaded.
+Printing Dictionary To File
+
+Test 4: depth 3
+Test 4 data will be saved in ../data3
+You entered: 
+[SEED_URL] http://www.cs.dartmouth.edu/~campbell
+[TARGET_DIRECTORY] ../data3/
+[CRAWLING_DEPTH] 3
+
+Done crawling!!
+614 files downloaded.
+Printing Dictionary To File
